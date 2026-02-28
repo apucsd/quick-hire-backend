@@ -1,0 +1,42 @@
+model User {
+  id                            String          @id @default(uuid())
+  name                          String
+  email                         String          @unique
+  phone                         String?
+  password                      String
+  dateOfBirth                   DateTime?
+  nationality                   String?
+  bio                           String?
+  location                      String?
+  role                          UserRoleEnum    @default(USER)
+  status                        UserStatus      @default(ACTIVE)
+  fcmTokens                     String[]
+  stripeCustomerId              String?
+  isAgreeWithTerms              Boolean
+  profile                       String?         @default("https://i.ibb.co.com/zWpK4WMm/avater.png")
+  otp                           String?
+  otpExpiry                     DateTime?
+  notificationsEnabled          Boolean         @default(true)
+  isEmailVerified               Boolean         @default(false)
+  emailVerificationToken        String?
+  emailVerificationTokenExpires DateTime?
+  createdAt                     DateTime        @default(now())
+  updatedAt                     DateTime        @updatedAt
+
+  // ALL RELATIONSHIPS
+ 
+
+  @@map("users")
+}
+
+enum UserRoleEnum {
+  USER
+  SUPER_ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  BLOCKED
+  DELETED
+}

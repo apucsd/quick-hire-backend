@@ -1,0 +1,12 @@
+model Application {
+    id         String   @id @default(uuid())
+    jobId      String
+    name       String
+    email      String
+    resumeLink String
+    coverNote  String
+    createdAt  DateTime @default(now())
+    job        Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+    @@map("applications")
+}
