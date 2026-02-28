@@ -1,10 +1,6 @@
 node_modules
-# Keep environment variables out of version control
-
 .vercel
 generate-module.ts
 dist
 winston
-firebase-service-account.json
-src/app/firebase/firebase-service.json
 .env
