@@ -8,6 +8,7 @@ const createJobZodSchema = z.object({
         company: z.string({
             required_error: 'Company is required',
         }),
+        logo: z.string().optional(),
         location: z.string({
             required_error: 'Location is required',
         }),

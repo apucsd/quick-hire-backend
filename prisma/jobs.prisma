@@ -2,6 +2,7 @@ model Job {
     id           String        @id @default(uuid())
     title        String
     company      String
+    logo         String?
     location     String
     category     String
     description  String
