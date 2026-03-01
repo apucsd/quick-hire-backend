@@ -28,7 +28,14 @@ const getAllJobsFromDB = async (
             salary: true,
             createdAt: true,
             updatedAt: true,
+            logo: true,
+            _count: {
+                select: {
+                    applications: true,
+                },
+            },
         })
+        .unnestCount()
         .execute();
 
     return result;

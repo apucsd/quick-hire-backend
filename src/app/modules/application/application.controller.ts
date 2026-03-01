@@ -5,6 +5,8 @@ import sendResponse from '../../utils/sendResponse';
 import { ApplicationService } from './application.service';
 
 const createApplication = catchAsync(async (req: Request, res: Response) => {
+
+    // console.log(req.body);
     const result = await ApplicationService.createApplicationIntoDB(req.body);
     sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -28,7 +30,23 @@ const getApplicationsByJobId = catchAsync(
     },
 );
 
+const getAllApplications = catchAsync(
+    async (req: Request, res: Response) => {
+        const result = await ApplicationService.getAllApplicationsFromDB(
+            req.query,
+        );
+        sendResponse(res, {
+            statusCode: httpStatus.OK,
+            success: true,
+            message: 'Applications fetched successfully',
+            data: result.data,
+            meta: result.meta,
+        });
+    },
+);
+
 export const ApplicationController = {
     createApplication,
     getApplicationsByJobId,
+    getAllApplications,
 };

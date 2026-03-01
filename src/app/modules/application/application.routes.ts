@@ -10,6 +10,7 @@ router.post(
     validateRequest.body(ApplicationValidation.createApplicationZodSchema),
     ApplicationController.createApplication,
 );
+router.get('/', ApplicationController.getAllApplications);
 
 router.get('/job/:jobId', ApplicationController.getApplicationsByJobId);
 
